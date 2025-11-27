@@ -1,0 +1,38 @@
+body{
+    background-color: azure
+}
+nav{
+    font-size: 20px;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 25vh; */
+    font-size: 50px;
+    font-weight: 300;
+    padding-top: 15vh;
+    padding-bottom: 10px;
+}
+h2{
+    display: flex;
+    justify-content: center;
+}
+.input-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 25px;
+}
+input{
+    border-radius: 5px;
+    padding-left: 10px;
+}
+button{
+    border-radius: 10px;
+    background-color: rgb(254, 70, 3);
+    color: aliceblue;
+    padding-left: 40px;
+    padding-right: 40px;
+}

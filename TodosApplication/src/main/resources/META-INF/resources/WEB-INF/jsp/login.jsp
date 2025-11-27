@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" href="/css/login.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Todos Application | Login</title>
@@ -27,7 +27,10 @@
   </div>
 </nav>
 <div class="login-form">
-    <h1>Login</h1>
+    <h1>Login Page</h1>
+    <div>
+        <h2>Hi, ${firstname}, enter your credentials to login!!!</h2>
+    </div>
     <form th:action="@{/perform_login}" method="post">
         <div class="input-div">
             <label for="username">Username:</label>
