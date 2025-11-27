@@ -1,10 +1,8 @@
-package com.project.TodosApplication.controller;
+package com.project.TodosApplication.helloController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class HelloController {
@@ -14,9 +12,9 @@ public class HelloController {
     public String sayHello(){
         return "Hello World";
     }
-    @RequestMapping("/hello2")
-    @ResponseBody
-    public String helloWorld(){
-        return "Hello World2";
+
+    @GetMapping("/say-hello-jsp")
+    public String sayHelloJsp(){
+        return "sayHello";
     }
 }
