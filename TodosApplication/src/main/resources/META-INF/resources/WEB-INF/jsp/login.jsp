@@ -17,8 +17,8 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
+      <!-- <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li> -->
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -28,22 +28,20 @@
 </nav>
 <div class="login-form">
     <h1>Login Page</h1>
-    <div>
-        <h2>Hi, ${firstname}, enter your credentials to login!!!</h2>
-    </div>
-    <form th:action="@{/perform_login}" method="post">
+    <form method="POST">
         <div class="input-div">
             <label for="username">Username:</label>
-            <input type="text" name="Username" placeholder="Username...">
+            <input type="text" name="username" placeholder="Username...">
         </div>
         <div class="input-div">
             <label for="password">Password:</label>
-            <input type="password" name="Password">
+            <input type="password" name="password">
         </div>
         <div class="input-div">
-            <button type="submit"><b>Login</b></button>
+            <input type="submit" value="Login" class="submit-btn">
         </div>
     </form>
+    <pre>${errorMessage}</pre>
     </div>
 </body>
 </html>
