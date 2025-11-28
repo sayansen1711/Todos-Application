@@ -1,20 +1,34 @@
 package com.project.TodosApplication.loginController;
 
+import com.project.TodosApplication.service.AuthenticationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class LoginController {
+
+    private final AuthenticationService authenticationService;
+    public LoginController(AuthenticationService authenticationService){
+        super();
+        this.authenticationService=authenticationService;
+    }
 
     @GetMapping("/")
     public String defaultPage(){
         return "login";
     }
-    @GetMapping("/login")
-    public String toLoginPage(@RequestParam String name, ModelMap map){
-        map.put("firstname",name);
+    @RequestMapping(value="/login", method=RequestMethod.GET)
+    public String toLoginPage(){
+        return "login";
+    }
+    @RequestMapping(value="/login", method=RequestMethod.POST)
+    public String toWelcomePage(@RequestParam String username, String password, ModelMap model){
+        if(authenticationService.authenticate(username,password)) {
+            model.put("username", username);
+            return "welcome";
+        }
+        model.put("errorMessage","Invalid Credentials");
         return "login";
     }
 }
