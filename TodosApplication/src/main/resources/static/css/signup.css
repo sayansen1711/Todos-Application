@@ -73,16 +73,3 @@ button:hover{
 .login-link a:hover{
     text-decoration: underline;
 }
-#pswrd-reset-link{
-    display: flex;
-    justify-content: flex-end;
-}
-#pswrd-reset-link a{
-    font-size: 14px;
-    text-decoration: none;
-    color: #2d3436;
-}
-#pswrd-reset-link a:hover{
-    text-decoration: underline;
-    color: #2575fc;
-}
