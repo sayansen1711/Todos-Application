@@ -23,10 +23,10 @@ public class LoginController {
         return "login";
     }
     @RequestMapping(value="/login", method=RequestMethod.POST)
-    public String toWelcomePage(@RequestParam String username, String password, ModelMap model){
+    public String toToDoPage(@RequestParam String username, String password, ModelMap model){
         if(authenticationService.authenticate(username,password)) {
             model.put("username", username);
-            return "welcome";
+            return "todos";
         }
         model.put("errorMessage","Invalid Credentials");
         return "login";
