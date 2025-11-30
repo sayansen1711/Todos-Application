@@ -1,47 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/login.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Todos Application | Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/login.css">
+  <title>Todos Application | Login</title>
 </head>
+
 <body>
-    <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Todos Application</a>
+
+  <body>
+    <div class="container">
+      <div>
+        <h1><span>Login</span></h1>
+      </div>
+      <form method="POST">
+        <div class="input-div">
+          <label for="Name">Username</label>
+          <input type="text" placeholder="Enter your username" class="inp" name="username">
+          <!-- <input type="checkbox" id="remember" value="Remember Me">Remember Me -->
+        </div>
+        <div class="input-div">
+          <label for="password">Password</label>
+          <input type="password" placeholder="Enter your password" class="inp" name="password">
+          <p id="pswrd-reset-link"><a href="#">Forgot password?</a></p>
+        </div>
+        <div class="input-div">
+          <button id="submit-btn">Sign In</button>
+        </div>
+      </form>
+      <div class="login-link">
+        <p>Dont't have an account? <a href="signup.html">Sign Up</a></p>
+      </div>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <!-- <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li> -->
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <!-- <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
-    </ul>
-  </div>
-</nav>
-<div class="login-form">
-    <h1>Login Page</h1>
-    <form method="POST">
-        <div class="input-div">
-            <label for="username">Username:</label>
-            <input type="text" name="username" placeholder="Username...">
-        </div>
-        <div class="input-div">
-            <label for="password">Password:</label>
-            <input type="password" name="password">
-        </div>
-        <div class="input-div">
-            <input type="submit" value="Login" class="submit-btn">
-        </div>
-    </form>
-    <pre>${errorMessage}</pre>
-    </div>
+  </body>
 </body>
+
 </html>
