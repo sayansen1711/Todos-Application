@@ -26,10 +26,13 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     runtimeOnly 'com.mysql:mysql-connector-j'
-    // https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper
     implementation("org.apache.tomcat.embed:tomcat-embed-jasper:11.0.14")
-    // https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0' // Or a later version
+    runtimeOnly 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
     compileOnly("jakarta.servlet:jakarta.servlet-api:6.0.0")
+    implementation 'org.webjars:bootstrap:5.3.2' // Or your preferred Bootstrap version
+    implementation 'org.webjars:jquery:3.7.1' // Bootstrap often depends on jQuery
+    implementation 'org.webjars:webjars-locator-core:0.52' // Required for locating WebJars
 }
 
 tasks.named('test') {

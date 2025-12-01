@@ -7,8 +7,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes("username")
 public class SignUpController {
 
     @Autowired
@@ -19,11 +21,11 @@ public class SignUpController {
         return "signup";
     }
     @RequestMapping(value = "/signup", method=RequestMethod.POST)
-    public String signUp(@RequestParam String fname, String email, String password, ModelMap model){
-        model.put("fname",fname);
+    public String signUp(@RequestParam String username, String email, String password, ModelMap model){
+        model.put("username",username.substring(0,username.indexOf(' ')));
         model.put("email", email);
         model.put("password",password);
-        if(authenticationService.validRegistration(fname,email,password))
+        if(authenticationService.validRegistration(username,email,password))
             return "todos";
         else
             return "signup";

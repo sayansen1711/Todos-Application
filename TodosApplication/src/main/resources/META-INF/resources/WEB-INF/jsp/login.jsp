@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,7 @@
         </div>
       </form>
       <div class="login-link">
-        <p>Dont't have an account? <a href="signup.html">Sign Up</a></p>
+        <p>Don not have an account? <a href="<c:url value='/signup' />">Sign Up</a></p>
       </div>
     </div>
   </body>
