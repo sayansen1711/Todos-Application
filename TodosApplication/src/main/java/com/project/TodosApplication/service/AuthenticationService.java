@@ -11,4 +11,13 @@ public class AuthenticationService {
             return true;
         return false;
     }
+    public boolean validRegistration(String username, String email, String password){
+        if(username.contains(" ")){
+            if(email.contains("@") && email.endsWith(".com")){
+                if(password.length()>=8 && password.length()<=32)
+                    return true;
+            }
+        }
+        return false;
+    }
 }
