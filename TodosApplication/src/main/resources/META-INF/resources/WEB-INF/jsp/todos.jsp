@@ -7,9 +7,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/todos.css">
   <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
   <title>Todos Application | Welcome</title>
 </head>
 
@@ -31,11 +28,11 @@
   </nav>
   <div class="welcome-page">
     <div class="wlcm-text">
-      <span>Hi, ${username}, welcome to Todos application!!!</span>
+      <span>Hi ${username}, welcome to Todos application!!!</span>
     </div>
   <div class="input-container">
     <input type="text" placeholder="Add a new task" class="task-inp" name="add-task">
-    <button class="add-btn">Add</button>
+    <button onclick="window.open('/add-todo', '_blank');" class="add-btn">Add</button>
   </div>
   <table class="todo-table">
     <thead>
@@ -60,6 +57,9 @@
     </tbody>
   </table>
   </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 </body>
 
 </html>

@@ -31,10 +31,10 @@ public class LoginController {
     public String toToDoPage(@RequestParam String username, String password, ModelMap model){
         if(authenticationService.authenticate(username,password)) {
             model.put("username", username);
-//            model.put("todos",todoService.findByUsername(username)); //adds todo view to the model
+//            model.addAttribute(("todos",todoService.findByUsername(username)); // adds todo view to the model
             return "redirect:/todo-page"; //redirects and loads /todo-page
         }
-        model.put("errorMessage","Invalid Credentials");
+        model.addAttribute("errorMessage","Invalid Credentials");
         return "login";
     }
 }
