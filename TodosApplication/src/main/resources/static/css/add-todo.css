@@ -1,0 +1,75 @@
+body{
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg,#e8e9ec,#cfdee6);
+    height: 100vh;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+.container{
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(10px);
+    padding: 35px;
+    width: 450px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+.container h1{
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2d3436;
+}
+.input-div{
+    margin-bottom: 18px;
+}
+.input-div label{
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color:#2d3436;
+}
+.input-div input{
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    outline: none;
+    transition: 0.3s;
+}
+.input-div input:focus{
+    box-shadow: 0 0 0 2px #6ab0ff;
+}
+button{
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    background: linear-gradient(135deg, #6b078c, #2575fc);
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+button:hover{
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #2575fc,#6b078c);
+    box-shadow: 0 8px 20px rgba(58,123 , 213, 0.4);
+}
+.login-link{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+.login-link a{
+    color: #2575fc;
+    text-decoration: none;
+    font-weight: 600;
+}
+.login-link a:hover{
+    text-decoration: underline;
+}
