@@ -1,10 +1,15 @@
 package com.project.TodosApplication.todos;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class Todo {
     private int id;
     private String username;
+    @NotNull
+    @Size(min = 10, message = "Enter atleast 10 characters")
     private String description;
     private LocalDate date;
     private boolean done;
@@ -63,7 +68,7 @@ public class Todo {
         this.date = date;
     }
 
-    public boolean isDone() {
+    public boolean getDone() {
         return done;
     }
 

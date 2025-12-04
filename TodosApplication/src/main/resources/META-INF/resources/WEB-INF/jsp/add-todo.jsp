@@ -15,10 +15,11 @@
         <div>
             <h1><span>Add Todo Activity</span></h1>
         </div>
-        <form:form method="POST" modelAttribute="todos">
+        <form:form method="POST" modelAttribute="newTodoItem">
             <div class="input-div">
                 <label for="description">Description</label>
                 <form:input type="text" class="inp" path="description" required="required"/>
+                <form:errors path="description" cssClass="text-warning"/>
             </div>
             <div class="input-div">
                 <label for="target-date">Target Date</label>

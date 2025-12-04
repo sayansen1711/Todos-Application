@@ -1,6 +1,7 @@
 package com.project.TodosApplication.todos;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -21,22 +22,26 @@ public class TodoController {
     @RequestMapping(value="/todo-page", method=RequestMethod.GET)
     public String showTodoListPage(ModelMap model){
         List<Todo> todosList=todoService.findByUsername("admin");
-        model.addAttribute("todos",todosList);
-        return "todos";
+        model.addAttribute("todosList",todosList);
+        return "todosPage";
     }
     @GetMapping("/add-todo")
     public String showAddTodoPage(ModelMap model){
-//        model.addAttribute("todos",new Todo()); //adds an empty Todo object to the Model which is mapped to the modelAttribute=todos in view(JSP)
+//        model.addAttribute("newTodoItem",new Todo()); //adds an empty Todo object to the Model which is mapped to the modelAttribute=todos in view(JSP)
         String username=model.get("username").toString();
-        Todo todoObj=new Todo(0,username,"Description",LocalDate.now(),false);
-        model.addAttribute("todos",todoObj); //adds a pre-filled Todo object to the Model which is mapped to the modelAttribute=todos in view(JSP)
+        Todo todoObj=new Todo(0,username,"",LocalDate.now(),false);
+        model.addAttribute("newTodoItem",todoObj); //adds a pre-filled Todo object to the Model which is mapped to the modelAttribute=todos in view(JSP)
         return "add-todo";
     }
     @PostMapping("/add-todo")
-    public String addNewTodoActivity(ModelMap model, Todo todos, BindingResult result, HttpSession session){
+    public String addNewTodoActivity(ModelMap model, @Valid @ModelAttribute("newTodoItem") Todo todos, BindingResult result, HttpSession session){
         String username = (String) session.getAttribute("username");
         todos.setUsername(username);
+        if(result.hasErrors()){
+            model.addAttribute("newTodoItem", todos);
+            return "add-todo";
+        }
         todoService.addTodo(todos.getUsername(), todos.getDescription(), todos.getDate()); //Spring automatically fills the Todo object based on form path values
-        return "redirect:/todo-page";
+        return "redirect:/todo-page";  //-> opening todos page: showTodoListPage
     }
 }
