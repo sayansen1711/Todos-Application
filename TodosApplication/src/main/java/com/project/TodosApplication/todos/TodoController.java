@@ -44,4 +44,11 @@ public class TodoController {
         todoService.addTodo(todos.getUsername(), todos.getDescription(), todos.getDate()); //Spring automatically fills the Todo object based on form path values
         return "redirect:/todo-page";  //-> opening todos page: showTodoListPage
     }
+
+    @RequestMapping("delete-todo")
+    public String deleteTodoItem(@RequestParam int id){
+        todoService.deleteById(id);
+        return "redirect:/todo-page";
+    }
+
 }
