@@ -1,10 +1,12 @@
 package com.project.TodosApplication.todos;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Service
 public class TodoService {
@@ -21,5 +23,19 @@ public class TodoService {
     public void addTodo(String username,String description, LocalDate date){
         Todo todoObj=new Todo(++idCounter,username,description,date.plusYears(1),false);
         todoList.add(todoObj);
+    }
+
+    public void deleteById(int id) {
+        Predicate<? super Todo> predicate=todoVar -> todoVar.getId()==id;
+        todoList.removeIf(predicate);
+    }
+    public Todo findTodoById(int id){
+        Predicate<? super Todo> predicate=todoVar->todoVar.getId()==id;
+        Todo todoObject=todoList.stream().filter(predicate).findFirst().get();
+        return todoObject;
+    }
+    public void updateTodo(@Valid Todo todoObject){
+        deleteById(todoObject.getId());
+        addTodo(todoObject.getUsername(), todoObject.getDescription(),todoObject.getDate());
     }
 }

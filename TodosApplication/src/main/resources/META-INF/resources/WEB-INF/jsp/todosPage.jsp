@@ -39,6 +39,8 @@
         <th>Description</th>
         <th>Date</th>
         <th>Status</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -49,6 +51,8 @@
         <td>${todoItem.description}</td>
         <td>${todoItem.date}</td>
         <td><input type="checkbox"></td>
+        <td><a href="update-todo?id=${todoItem.id}" class="btn btn-success">Update</a></td>
+        <td><a href="delete-todo?id=${todoItem.id}" class="btn btn-warning">Delete</a></td>
       </tr>
       </c:forEach>
     </tbody>

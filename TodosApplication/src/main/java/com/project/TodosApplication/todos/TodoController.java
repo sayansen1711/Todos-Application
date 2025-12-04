@@ -44,4 +44,28 @@ public class TodoController {
         todoService.addTodo(todos.getUsername(), todos.getDescription(), todos.getDate()); //Spring automatically fills the Todo object based on form path values
         return "redirect:/todo-page";  //-> opening todos page: showTodoListPage
     }
+
+    @RequestMapping("delete-todo")
+    public String deleteTodoItem(@RequestParam int id){
+        todoService.deleteById(id);
+        return "redirect:/todo-page";
+    }
+    @GetMapping("update-todo")
+    public String showUpdateTodoPage(@RequestParam int id, ModelMap model){
+        Todo todoObject=todoService.findTodoById(id);
+        model.addAttribute("newTodoItem",todoObject);
+        return "add-todo";
+    }
+    @PostMapping("update-todo")
+    public String updateTodoActivity(ModelMap model,
+                                     @Valid @ModelAttribute("newTodoItem") Todo todos,
+                                     BindingResult result, HttpSession session){
+        if(result.hasErrors()){
+            return "add-todo";
+        }
+        String username=session.getAttribute("username").toString();
+        todos.setUsername(username);
+        todoService.updateTodo(todos);
+        return "redirect:todo-page";
+    }
 }
