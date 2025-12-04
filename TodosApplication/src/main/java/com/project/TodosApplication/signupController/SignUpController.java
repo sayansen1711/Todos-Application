@@ -26,7 +26,7 @@ public class SignUpController {
         model.put("email", email);
         model.put("password",password);
         if(authenticationService.validRegistration(username,email,password))
-            return "todos";
+            return "todosPage";
         else
             return "signup";
     }

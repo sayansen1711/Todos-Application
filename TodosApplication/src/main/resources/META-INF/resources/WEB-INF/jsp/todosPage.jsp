@@ -30,10 +30,7 @@
     <div class="wlcm-text">
       <span>Hi ${username}, welcome to Todos application!!!</span>
     </div>
-  <div class="input-container">
-    <input type="text" placeholder="Add a new task" class="task-inp" name="add-task">
-    <button onclick="window.open('/add-todo', '_blank');" class="add-btn">Add</button>
-  </div>
+
   <table class="todo-table">
     <thead>
       <tr>
@@ -45,7 +42,7 @@
       </tr>
     </thead>
     <tbody>
-    <c:forEach items="${todos}" var="todoItem">
+    <c:forEach items="${todosList}" var="todoItem">
       <tr>
         <td>${todoItem.id}</td>
         <td>${todoItem.username}</td>
@@ -56,6 +53,9 @@
       </c:forEach>
     </tbody>
   </table>
+  <div class="input-container">
+      <button onclick="window.open('/add-todo', '_blank');" class="add-btn">Add</button>
+  </div>
   </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
