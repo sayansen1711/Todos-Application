@@ -54,18 +54,18 @@ public class TodoController {
     public String showUpdateTodoPage(@RequestParam int id, ModelMap model){
         Todo todoObject=todoService.findTodoById(id);
         model.addAttribute("newTodoItem",todoObject);
-        return "add-todo";
+        return "add-todo"; //open up add-todo page
     }
     @PostMapping("update-todo")
     public String updateTodoActivity(ModelMap model,
                                      @Valid @ModelAttribute("newTodoItem") Todo todos,
                                      BindingResult result, HttpSession session){
         if(result.hasErrors()){
-            return "add-todo";
+            return "add-todo"; //open up add-todo page
         }
         String username=session.getAttribute("username").toString();
         todos.setUsername(username);
         todoService.updateTodo(todos);
-        return "redirect:todo-page";
+        return "redirect:todo-page"; //going to Todos page
     }
 }

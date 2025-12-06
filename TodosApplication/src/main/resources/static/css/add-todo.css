@@ -2,13 +2,14 @@ body{
     font-family: "Poppins", sans-serif;
     background: linear-gradient(135deg,#e8e9ec,#cfdee6);
     height: 100vh;
-    display: flex;
+    display: block;
     /* flex-direction: column; */
     align-items: center;
     justify-content: center;
     margin: 0;
 }
 .container{
+    margin-top: 100px;
     background: rgba(255,255,255,0.55);
     backdrop-filter: blur(10px);
     padding: 35px;
