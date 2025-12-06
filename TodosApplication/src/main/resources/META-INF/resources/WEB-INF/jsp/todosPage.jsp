@@ -10,7 +10,21 @@
 </head>
 
 <body>
- <%@ include file="common/navigation.jspf" %>
+ <nav class="navbar navbar-inverse">
+         <div class="container-fluid">
+             <div class="navbar-header">
+                 <a class="navbar-brand" href="#">Todos Application</a>
+             </div>
+             <ul class="nav navbar-nav">
+                 <li><a href="welcome">Home</a></li>
+                 <li class="active"><a href="todo-page">My Todos</a></li>
+             </ul>
+             <ul class="nav navbar-nav navbar-right">
+                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
+                 <li><a href="<c:url value='/signup' />"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+             </ul>
+         </div>
+ </nav>
   <div class="welcome-page">
     <div class="wlcm-text">
       <span>Hi ${username}, welcome to Todos application!!!</span>
@@ -41,7 +55,7 @@
     </tbody>
   </table>
   <div class="input-container">
-      <button onclick="window.open('/add-todo', '_blank');" class="add-btn">Add</button>
+      <button onclick="window.location.href='/add-todo' " class="add-btn">Add</button>
   </div>
   </div>
   <%@ include file="common/footer.jspf" %>
