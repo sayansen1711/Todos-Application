@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <%@ include file="common/header.jspf" %>
     <link rel="stylesheet" href="/css/add-todo.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,19 +11,25 @@
 </head>
 
 <body>
+    <%@ include file="common/navigation.jspf" %>
     <div class="container">
         <div>
-            <h1><span>Add Todo Activity</span></h1>
+            <h1><span>Enter Details</span></h1>
         </div>
         <form:form method="POST" modelAttribute="newTodoItem">
             <div class="input-div">
-                <label for="description">Description</label>
+            <fieldset class="mb-3">
+                <label path="description">Description</label>
                 <form:input type="text" class="inp" path="description" required="required"/>
                 <form:errors path="description" cssClass="text-warning"/>
+            </fieldset>
             </div>
             <div class="input-div">
-                <label for="target-date">Target Date</label>
+            <fieldset class="mb-3">
+                <label path="date">Target Date</label>
                 <form:input type="date" class="inp" path="date" required="required"/>
+                <form:errors paths="date" cssClass="text-warning"/>
+            </fieldset>
             </div>
             <form:hidden path="username" />
             <div class="input-div">
@@ -32,8 +38,7 @@
         </form:form>
     </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <%@ include file="common/footer.jspf" %>
 </body>
 
 </html>
