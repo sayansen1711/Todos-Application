@@ -17,9 +17,6 @@ public class TodoService {
         todoList.add(new Todo(++idCounter,"Udemy","Learn Devops", LocalDate.now().plusMonths(5),false));
         todoList.add(new Todo(++idCounter,"EDEX","Learn Full Stack", LocalDate.now().plusMonths(12),false));
     }
-    public List<Todo> findByUsername(String username){
-        return todoList;
-    }
     public void addTodo(String username,String description, LocalDate date){
         Todo todoObj=new Todo(++idCounter,username,description,date,false);
         todoList.add(todoObj);
@@ -37,5 +34,9 @@ public class TodoService {
     public void updateTodo(@Valid Todo todoObject){
         deleteById(todoObject.getId());
         addTodo(todoObject.getUsername(), todoObject.getDescription(),todoObject.getDate());
+    }
+    public List<Todo> findByUsername(String username){
+        Predicate<? super Todo> predicate=todoVar-> todoVar.getUsername().equalsIgnoreCase(username);
+        return todoList.stream().filter(predicate).toList();
     }
 }
