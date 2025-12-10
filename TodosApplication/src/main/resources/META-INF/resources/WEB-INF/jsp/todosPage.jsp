@@ -21,7 +21,7 @@
              </ul>
              <ul class="nav navbar-nav navbar-right">
                  <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
-                 <li><a href="<c:url value='/signup' />"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                 <li><a href="<c:url value='/logout' />"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
              </ul>
          </div>
  </nav>
