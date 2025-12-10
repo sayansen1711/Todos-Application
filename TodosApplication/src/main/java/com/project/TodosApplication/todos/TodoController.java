@@ -1,7 +1,9 @@
 package com.project.TodosApplication.todos;
 
+import com.project.TodosApplication.security.SpringSecurityConfig;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -15,13 +17,16 @@ import java.util.List;
 public class TodoController {
     private TodoService todoService;
 
+    @Autowired
+    private SpringSecurityConfig securityConfig;
+
     public TodoController(TodoService todoService){
         super();
         this.todoService=todoService;
     }
     @RequestMapping(value="/todo-page", method=RequestMethod.GET)
     public String showTodoListPage(ModelMap model){
-        List<Todo> todosList=todoService.findByUsername("user");
+        List<Todo> todosList=todoService.findByUsername("admin");
         model.addAttribute("todosList",todosList);
         return "todosPage";
     }
