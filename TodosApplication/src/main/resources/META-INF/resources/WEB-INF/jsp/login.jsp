@@ -30,7 +30,7 @@
           <button id="submit-btn">Sign In</button>
         </div>
       </form>
-      <div class="login-link">
+      <div class="signup-link">
         <p>Don not have an account? <a href="<c:url value='/signup' />">Sign Up</a></p>
       </div>
     </div>
