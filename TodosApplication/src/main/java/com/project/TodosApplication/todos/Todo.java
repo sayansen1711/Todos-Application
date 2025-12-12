@@ -1,10 +1,12 @@
 package com.project.TodosApplication.todos;
 
+import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
+@Entity
 public class Todo {
     private int id;
     private String username;
