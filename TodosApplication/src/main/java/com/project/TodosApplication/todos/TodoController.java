@@ -16,14 +16,16 @@ import java.util.List;
 @SessionAttributes("username")
 public class TodoController {
     private TodoService todoService;
-
-    @Autowired
+    private final TodoRepository todoRepository;
     private SpringSecurityConfig securityConfig;
 
-    public TodoController(TodoService todoService){
+    public TodoController(TodoService todoService, TodoRepository todoRepository,SpringSecurityConfig securityConfig){
         super();
         this.todoService=todoService;
+        this.todoRepository = todoRepository;
+        this.securityConfig=securityConfig;
     }
+
     @RequestMapping(value="/todo-page", method=RequestMethod.GET)
     public String showTodoListPage(ModelMap model){
         List<Todo> todosList=todoService.findByUsername(securityConfig.getLoggedInUserName());

@@ -1,6 +1,8 @@
 package com.project.TodosApplication.todos;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -8,6 +10,8 @@ import java.time.LocalDate;
 
 @Entity
 public class Todo {
+    @Id
+    @GeneratedValue
     private int id;
     private String username;
     @NotNull
