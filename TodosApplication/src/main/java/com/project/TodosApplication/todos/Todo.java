@@ -3,6 +3,7 @@ package com.project.TodosApplication.todos;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -15,8 +16,9 @@ public class Todo {
     private int id;
     private String username;
     @NotNull
-    @Size(min = 10, message = "Enter atleast 10 characters")
+    @Size(min = 10, message = "Enter at least 10 characters")
     private String description;
+    @FutureOrPresent
     private LocalDate date;
     private boolean done;
 
