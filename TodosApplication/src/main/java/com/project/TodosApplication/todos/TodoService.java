@@ -4,39 +4,40 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 @Service
 public class TodoService {
-    private static List<Todo> todoList = new ArrayList<>();
-    private static int idCounter=0;
-    static{
-        todoList.add(new Todo(++idCounter,"Coursera","Learn AWS", LocalDate.now().plusMonths(2),false));
-        todoList.add(new Todo(++idCounter,"Udemy","Learn Devops", LocalDate.now().plusMonths(5),false));
-        todoList.add(new Todo(++idCounter,"EDEX","Learn Full Stack", LocalDate.now().plusMonths(12),false));
+    private final TodoRepository todoRepository;
+
+    //Constructor Injection
+    public TodoService(TodoRepository todoRepository) {
+        this.todoRepository = todoRepository;
     }
+    //Create / Add entry to DB
     public void addTodo(String username,String description, LocalDate date){
-        Todo todoObj=new Todo(++idCounter,username,description,date,false);
-        todoList.add(todoObj);
+        Todo todo = new Todo();
+        todo.setUsername(username);
+        todo.setDescription(description);
+        todo.setDate(date);
+        todo.setDone(false);
+        todoRepository.save(todo);
     }
 
-    public void deleteById(int id) {
-        Predicate<? super Todo> predicate=todoVar -> todoVar.getId()==id;
-        todoList.removeIf(predicate);
-    }
-    public Todo findTodoById(int id){
-        Predicate<? super Todo> predicate=todoVar->todoVar.getId()==id;
-        Todo todoObject=todoList.stream().filter(predicate).findFirst().get();
-        return todoObject;
-    }
-    public void updateTodo(@Valid Todo todoObject){
-        deleteById(todoObject.getId());
-        addTodo(todoObject.getUsername(), todoObject.getDescription(),todoObject.getDate());
-    }
+    //Read by Username
     public List<Todo> findByUsername(String username){
-        Predicate<? super Todo> predicate=todoVar-> todoVar.getUsername().equalsIgnoreCase(username);
-        return todoList.stream().filter(predicate).toList();
+        return todoRepository.findByUsername(username);
+    }
+    //Read by ID
+    public Todo findTodoById(int id){
+        return todoRepository.findById(id).orElseThrow(() -> new RuntimeException("Todo not found with id: " + id));
+    }
+    //Update Object
+    public void updateTodo(@Valid Todo todoObject){
+        todoRepository.save(todoObject);
+    }
+    //Delete by ID
+    public void deleteById(int id) {
+        todoRepository.deleteById(id);
     }
 }
