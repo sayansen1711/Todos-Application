@@ -13,7 +13,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Controller
-@SessionAttributes("username")
 public class TodoController {
     private TodoService todoService;
     private final TodoRepository todoRepository;
@@ -30,19 +29,20 @@ public class TodoController {
     public String showTodoListPage(ModelMap model){
         List<Todo> todosList=todoService.findByUsername(securityConfig.getLoggedInUserName());
         model.addAttribute("todosList",todosList);
+        model.addAttribute("username",securityConfig.getLoggedInUserName());
         return "todosPage";
     }
     @GetMapping("/add-todo")
     public String showAddTodoPage(ModelMap model){
 //        model.addAttribute("newTodoItem",new Todo()); //adds an empty Todo object to the Model which is mapped to the modelAttribute=todos in view(JSP)
-        String username=model.get("username").toString();
+        String username = securityConfig.getLoggedInUserName();
         Todo todoObj=new Todo(0,username,"",LocalDate.now(),false);
         model.addAttribute("newTodoItem",todoObj); //adds a pre-filled Todo object to the Model which is mapped to the modelAttribute=todos in view(JSP)
         return "add-todo";
     }
     @PostMapping("/add-todo")
     public String addNewTodoActivity(ModelMap model, @Valid @ModelAttribute("newTodoItem") Todo todos, BindingResult result, HttpSession session){
-        String username = (String) session.getAttribute("username");
+        String username = securityConfig.getLoggedInUserName();
         todos.setUsername(username);
         if(result.hasErrors()){
             model.addAttribute("newTodoItem", todos);
@@ -70,7 +70,7 @@ public class TodoController {
         if(result.hasErrors()){
             return "add-todo"; //open up add-todo page
         }
-        String username=session.getAttribute("username").toString();
+        String username = securityConfig.getLoggedInUserName();
         todos.setUsername(username);
         todoService.updateTodo(todos);
         return "redirect:todo-page"; //going to Todos page
