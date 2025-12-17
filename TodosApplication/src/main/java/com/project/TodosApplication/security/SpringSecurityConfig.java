@@ -54,11 +54,25 @@ public class SpringSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login").permitAll()
+                        .requestMatchers(
+                                "/login",
+                                "/signup",
+                                "/css/**",
+                                "/webjars/**",
+                                "/WEB-INF/jsp/**") //allow only these URLs before/without authentication, and css-webjars to load static content
+                        .permitAll() //permit the above url types
                         .anyRequest().authenticated()
                 )
-                .formLogin(withDefaults());
-
+                .formLogin(form->form
+                        .loginPage("/login") //specify path to custom login page
+                        .loginProcessingUrl("/perform_login")
+                        .defaultSuccessUrl("/welcome", true)
+                        .failureUrl("/login?error=true")
+                        .permitAll() // Allow everyone to view the login page
+                )
+                .logout(logout->logout.logoutSuccessUrl("/login?logout=true")) // Allow everyone to logout
+                .csrf(csrf -> csrf.disable());
+//                .headers(headers -> headers.frameOptions(frame -> frame.disable()));
         return http.build();
     }
 }

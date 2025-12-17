@@ -8,20 +8,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@SessionAttributes("username")
 public class WelcomeController {
 
-    @Autowired
-    private SpringSecurityConfig securityConfig;
+    private final SpringSecurityConfig securityConfig;
 
-    @Autowired
-    private TodoService todoService;
-
-    @GetMapping("/")
-    public String goToLoginPage(ModelMap model){
-        model.put("username",securityConfig.getLoggedInUserName());
-        return "welcome";
+    public WelcomeController(SpringSecurityConfig securityConfig){
+        this.securityConfig=securityConfig;
     }
+
     @GetMapping("/welcome")
     public String welcomePage(ModelMap map){
         map.put("username",securityConfig.getLoggedInUserName());
