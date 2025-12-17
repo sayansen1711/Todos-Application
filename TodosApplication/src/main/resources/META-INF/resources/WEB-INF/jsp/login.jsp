@@ -15,7 +15,7 @@
       <div>
         <h1><span>Login</span></h1>
       </div>
-      <form method="POST">
+      <form action="/perform_login" method="POST">
         <div class="input-div">
           <label for="Name">Username</label>
           <input type="text" placeholder="Enter your username" class="inp" name="username">
@@ -27,7 +27,7 @@
           <p id="pswrd-reset-link"><a href="#">Forgot password?</a></p>
         </div>
         <div class="input-div">
-          <button id="submit-btn">Sign In</button>
+          <button type="submit" id="submit-btn">Sign In</button>
         </div>
       </form>
       <div class="signup-link">

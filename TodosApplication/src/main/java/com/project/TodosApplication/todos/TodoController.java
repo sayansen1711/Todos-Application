@@ -72,6 +72,6 @@ public class TodoController {
         String username = securityConfig.getLoggedInUserName();
         todos.setUsername(username);
         todoService.updateTodo(todos);
-        return "redirect:todo-page"; //going to Todos page
+        return "redirect:/todo-page"; //going to Todos page
     }
 }
