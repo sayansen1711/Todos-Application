@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
@@ -20,53 +21,22 @@ import java.util.function.Function;
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig {
-    //Use LDAP or Database
-    //Using here In memory database
-    private final CustomUserDetailsService customUserDetailsService;
 
-    public SpringSecurityConfig(CustomUserDetailsService customUserDetailsService){
-        this.customUserDetailsService=customUserDetailsService;
-    }
-
-//    @Bean
-//    public InMemoryUserDetailsManager createUserDetailsManager(){
-//        UserDetails ud1=createNewUser("admin","dummy","ADMIN");
-//        UserDetails ud2=createNewUser("Eric","dummy","USER");
-//        UserDetails ud3=createNewUser("Casey","dummy","USER");
-//        UserDetails ud4=createNewUser("Amanda","dummy","USER");
-//        return new InMemoryUserDetailsManager(ud1, ud2, ud3);
-//    }
     @Bean
     public PasswordEncoder passwordEncoder(){ //Password encoder
         return new BCryptPasswordEncoder();
     }
     // Authentication manager (required for login + auto-login)
     @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        return http.getSharedObject(AuthenticationManager.class);
-    }
-
-    // Tell Spring Security to load users from DB
-    @Autowired
-    public void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(customUserDetailsService)
-                .passwordEncoder(passwordEncoder());
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
     }
 
     public String getLoggedInUserName(){
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
         return authentication.getName();
     }
-//    public UserDetails createNewUser(String username, String password, String role){
-//        Function<String, String> passwordEncoder= input-> passwordEncoder().encode(input);
-//        UserDetails userDetails= User.builder().
-//                passwordEncoder(passwordEncoder).
-//                username(username).
-//                password(password).
-//                roles(role).
-//                build();
-//        return userDetails;
-//    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
