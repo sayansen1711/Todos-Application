@@ -11,3 +11,4 @@ CREATE TABLE users (
 );
 
 select * from users;
+select * from todo where username='Rakesh Sen';
