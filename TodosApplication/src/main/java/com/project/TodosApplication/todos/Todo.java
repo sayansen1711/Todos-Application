@@ -18,13 +18,12 @@ public class Todo {
     @NotNull
     @Size(min = 10, message = "Enter at least 10 characters")
     private String description;
-    @FutureOrPresent
+    @FutureOrPresent(message = "The date cannot be earlier than current date")
     private LocalDate date;
     private boolean done;
 
-    public Todo(){
+    public Todo(){}
 
-    }
     public Todo(int id, String username, String description, LocalDate date, boolean done) {
         this.id = id;
         this.username = username;
