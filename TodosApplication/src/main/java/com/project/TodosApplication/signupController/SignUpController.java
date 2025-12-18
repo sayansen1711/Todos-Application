@@ -1,10 +1,8 @@
 package com.project.TodosApplication.signupController;
 
-import com.project.TodosApplication.security.SpringSecurityConfig;
 import com.project.TodosApplication.user.User;
 import com.project.TodosApplication.user.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,7 +21,7 @@ public class SignUpController {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
-    public SignUpController(SpringSecurityConfig springSecurityConfig, UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager){
+    public SignUpController(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager){
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
@@ -35,10 +33,6 @@ public class SignUpController {
     }
     @RequestMapping(value = "/signup", method=RequestMethod.POST)
     public String signUp(@RequestParam String username, String email, String password, ModelMap model, User user, HttpServletRequest request){
-//        Authentication authentication=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(),user.getPassword()));
-//        model.put("username", username);
-//        model.put("email", email);
-//        model.put("password",password);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole("USER");
 
