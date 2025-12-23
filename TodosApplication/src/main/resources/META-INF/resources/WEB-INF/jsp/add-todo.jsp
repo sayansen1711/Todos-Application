@@ -42,7 +42,7 @@
             <fieldset class="mb-3">
                 <label path="date">Target Date</label>
                 <form:input type="date" class="inp" path="date" required="required"/>
-                <form:errors paths="date" cssClass="text-warning"/>
+                <form:errors path="date" cssClass="text-warning"/>
             </fieldset>
             </div>
             <form:hidden path="username" />
