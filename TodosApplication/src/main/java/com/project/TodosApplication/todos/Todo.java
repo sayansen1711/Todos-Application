@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -18,7 +19,8 @@ public class Todo {
     @NotNull
     @Size(min = 10, message = "Enter at least 10 characters")
     private String description;
-    @FutureOrPresent(message = "The date cannot be earlier than current date")
+    @FutureOrPresent(message = "Enter a date in the future")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
     private boolean done;
 
