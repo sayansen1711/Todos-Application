@@ -74,4 +74,11 @@ public class TodoController {
         todoService.updateTodo(todos);
         return "redirect:/todo-page"; //going to Todos page
     }
+    @PostMapping("update-todo-status")
+    public String updateTodoStatus(@RequestParam int id, @RequestParam(required = false) boolean done){
+        Todo todo=todoService.findTodoById(id);
+        todo.setDone(done);
+        todoService.updateTodo(todo);
+        return "redirect:/todo-page";
+    }
 }

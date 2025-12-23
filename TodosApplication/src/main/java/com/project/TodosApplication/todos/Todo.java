@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
-@Entity
+@Entity //defines the schema
 public class Todo {
     @Id
     @GeneratedValue

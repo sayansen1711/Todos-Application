@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository //DAO (data access object)
 public interface TodoRepository extends JpaRepository<Todo, Integer> {
     List<Todo> findByUsername(String username);
 }

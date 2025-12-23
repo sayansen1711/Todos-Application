@@ -86,3 +86,7 @@ button:hover{
     text-decoration: underline;
     color: #2575fc;
 }
+.error-msg{
+    color: red;
+    margin-bottom: 12px;
+}
