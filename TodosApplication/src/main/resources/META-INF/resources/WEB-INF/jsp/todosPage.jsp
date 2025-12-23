@@ -47,7 +47,12 @@
         <td>${todoItem.username}</td>
         <td>${todoItem.description}</td>
         <td>${todoItem.date}</td>
-        <td><input type="checkbox"></td>
+        <td>
+            <form action="update-todo-status" method="POST">
+                <input type="hidden" name="id" value="${todoItem.id}"/>
+                <input type="checkbox" name="done" onchange="this.form.submit()" ${todoItem.done ? 'checked':''}/>
+            </form>
+        </td>
         <td><a href="update-todo?id=${todoItem.id}" class="btn btn-success">Update</a></td>
         <td><a href="delete-todo?id=${todoItem.id}" class="btn btn-warning">Delete</a></td>
       </tr>
