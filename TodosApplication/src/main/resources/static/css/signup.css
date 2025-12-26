@@ -73,3 +73,10 @@ button:hover{
 .login-link a:hover{
     text-decoration: underline;
 }
+.field-error {
+    color: crimson;
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 6px;
+    display: block;
+}

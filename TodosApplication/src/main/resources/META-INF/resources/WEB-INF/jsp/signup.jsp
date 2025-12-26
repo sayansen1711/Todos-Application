@@ -17,18 +17,18 @@
         <form:form action="/signup" method="post" modelAttribute="signup">
             <div class="input-div">
                 <label for="Name">Full Name</label>
-                <form:input path="username" type="text" placeholder="Enter your full name" class="inp" name="username"/>
-                <form:errors path="username" cssClass="error"/>
+                <form:input path="username" type="text" placeholder="Enter your full name" class="inp" name="username" required="required"/>
+                <form:errors path="username" cssClass="field-error"/>
             </div>
             <div class="input-div">
                 <label for="Email">Email</label>
-                <form:input path="email" type="email" placeholder="Enter your email" class="inp" name="email"/>
-                <form:errors path="email" cssClass="error"/>
+                <form:input path="email" type="email" placeholder="Enter your email" class="inp" name="email" required="required"/>
+                <form:errors path="email" cssClass="field-error"/>
             </div>
             <div class="input-div">
                 <label for="password">Password</label>
-                <form:input path="password" type="password" placeholder="Create a password" class="inp" name="password"/>
-                <form:errors path="password" cssClass="error"/>
+                <form:input path="password" type="password" placeholder="Create a password" class="inp" name="password" required="required"/>
+                <form:errors path="password" cssClass="field-error"/>
             </div>
             <div class="input-div">
                 <button id="submit-btn" type="submit">Sign Up</button>
