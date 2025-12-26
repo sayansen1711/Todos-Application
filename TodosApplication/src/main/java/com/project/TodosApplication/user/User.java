@@ -1,9 +1,6 @@
 package com.project.TodosApplication.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -12,11 +9,14 @@ public class User {
     @Id
     @GeneratedValue
     private long id;
-    @NotNull
+
+    @Column(unique = true)
     private String username;
-    @NotNull
+
     private String password;
-    @NotNull
+
+    private String email;
+
     private String role;
 
     public User(){}
@@ -38,6 +38,10 @@ public class User {
         return password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public String getRole() {
         return role;
     }
@@ -48,6 +52,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setRole(String role) {
