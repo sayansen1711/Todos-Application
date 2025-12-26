@@ -13,14 +13,13 @@ import java.util.List;
 
 @Controller
 public class TodoController {
-    private TodoService todoService;
-    private final TodoRepository todoRepository;
-    private SpringSecurityConfig securityConfig;
+
+    private final TodoService todoService;
+    private final SpringSecurityConfig securityConfig;
 
     public TodoController(TodoService todoService, TodoRepository todoRepository,SpringSecurityConfig securityConfig){
         super();
         this.todoService=todoService;
-        this.todoRepository = todoRepository;
         this.securityConfig=securityConfig;
     }
 
