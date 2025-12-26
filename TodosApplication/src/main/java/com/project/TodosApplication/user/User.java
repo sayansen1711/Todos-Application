@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 @Table(name = "users")  //custom name for table in todosDB
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(unique = true)

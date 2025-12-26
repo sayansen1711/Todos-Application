@@ -41,7 +41,7 @@ public class SignUpController {
         return "signup";
     }
     @RequestMapping(value = "/signup", method=RequestMethod.POST)
-    public String signUp(@Valid @ModelAttribute("signup") SignUpDTO signUpDTO, HttpServletRequest request, BindingResult result){ //all input field from UI(View) are mapped to SignUpDTO
+    public String signUp(@Valid @ModelAttribute("signup") SignUpDTO signUpDTO,  BindingResult result, HttpServletRequest request){ //all input field from UI(View) are mapped to SignUpDTO
         if(result.hasErrors())
         {
             return "signup";

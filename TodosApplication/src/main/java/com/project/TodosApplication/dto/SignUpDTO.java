@@ -6,19 +6,18 @@ import jakarta.validation.constraints.Size;
 
 public class SignUpDTO { //used for sign up form
 
-    @NotBlank(message="Username Field cannot be blank")
+    @NotBlank
     private String username;
 
-    @Email(message="Email Field cannot be blank")
+    @Email
     @NotBlank
     private String email;
 
-    @NotBlank(message = "Password Field cannot be blank")
+    @NotBlank
     @Size(min = 6, max = 32, message = "Password length must be between 6 and 32")
     private String password;
 
     public SignUpDTO() {
-
     }
 
     public String getUsername() {
