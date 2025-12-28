@@ -45,6 +45,7 @@
                 <form:errors path="date" cssClass="text-warning"/>
             </fieldset>
             </div>
+            <form:hidden path="username" />
             <div class="input-div">
                 <button id="submit-btn">Add</button>
             </div>

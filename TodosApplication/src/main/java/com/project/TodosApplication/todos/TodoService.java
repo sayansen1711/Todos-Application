@@ -56,6 +56,7 @@ public class TodoService {
     private TodoDTO convertToDTO(Todo todo) {
         TodoDTO dto = new TodoDTO();
         dto.setId(todo.getId());
+        dto.setUsername(todo.getUsername());
         dto.setDescription(todo.getDescription());
         dto.setDate(todo.getDate());
         dto.setDone(todo.getDone());
