@@ -1,9 +1,5 @@
-package com.project.TodosApplication.todos;
+package com.project.TodosApplication.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -11,35 +7,26 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
-@Entity //defines the schema
-public class Todo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class TodoDTO {
+
     private int id;
-    private String username;
+    @NotNull
+    @Size(min = 10, message = "Enter at least 10 characters")
     private String description;
+
+    @FutureOrPresent(message = "Enter a date in the future")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
+
     private boolean done;
 
-    public Todo(){}
+    public TodoDTO(){}
 
-    public Todo(int id, String username, String description, LocalDate date, boolean done) {
-        this.id = id;
-        this.username = username;
+    public TodoDTO(int id, String description, LocalDate date, boolean done) {
+        this.id=id;
         this.description = description;
         this.date = date;
         this.done = done;
-    }
-
-    @Override
-    public String toString() {
-        return "Todo{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", description='" + description + '\'' +
-                ", date=" + date +
-                ", done=" + done +
-                '}';
     }
 
     public int getId() {
@@ -48,14 +35,6 @@ public class Todo {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getDescription() {
@@ -81,4 +60,5 @@ public class Todo {
     public void setDone(boolean done) {
         this.done = done;
     }
+
 }
