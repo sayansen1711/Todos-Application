@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 public class TodoDTO {
 
+    private String username; //read-only
     private int id;
     @NotNull
     @Size(min = 10, message = "Enter at least 10 characters")
@@ -37,6 +38,14 @@ public class TodoDTO {
         this.id = id;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username){
+        this.username=username;
+    }
+    
     public String getDescription() {
         return description;
     }
